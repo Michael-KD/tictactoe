@@ -1,4 +1,18 @@
+let playerTurn = "X";
+let numberTurn = 0;
+let gameEnded = false;
 
+
+function performLogic(button, tile) {
+  if (playerTurn === "X") {
+    $(tile).html("<p>X</p>");
+    playerTurn = "O"; 
+  } 
+  else if (playerTurn === "O") {
+    $(tile).html("<p>O</p>");
+    playerTurn = "X";
+  }
+}
 
 
 
