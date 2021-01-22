@@ -1,3 +1,9 @@
+// 1. 
+// 2. 
+
+
+
+
 let tileSlice = "";
 let playerTurn = "X";
 let numberTurn = 0;
@@ -14,8 +20,8 @@ let tile8 = "";
 let tile9 = "";
 
 function declareWinner() {
-  if (winner === "X") {$(".result").html("<h2>X wins!</h2>");}
-  else if (winner === "O") {$(".result").html("<h2>O wins!</h2>");}
+  if (winner === "X") {$(".result").html("<h2>X wins!</h2>"); gameEnded = true;}
+  else if (winner === "O") {$(".result").html("<h2>O wins!</h2>"); gameEnded = true;}
   else if (numberTurn === 9) {$(".result").html("<h2>It's a tie!</h2>");}
   else {winner = "";}
 }
@@ -65,6 +71,7 @@ function choiceGrid(tileId) {
 } 
 
 function performLogic(button, tile) {
+  if (gameEnded === false) {
     if (playerTurn === "X") {
       $(tile).html("<p>X</p>");
       choiceGrid(tile);
@@ -82,7 +89,9 @@ function performLogic(button, tile) {
       declareWinner();
       playerTurn = "X";
       //console.log("Winner: " + winner);
+    }
   }
+  else {}
 }
 
 
