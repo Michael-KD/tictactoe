@@ -40,7 +40,7 @@ In this unit, coders will create the classic game of tic tac toe in their browse
 - [x] Determine the appropriate location to place the Win functions
 
 #### Wrap
-- [ ] Push your changes!
+- [x] Push your changes!
 
 ## Project Extensions:
 - [ ] Add in your own css to personalize your project

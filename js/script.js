@@ -82,7 +82,7 @@ function performLogic(button, tile) {
       declareWinner();
       playerTurn = "X";
     }
-  } else {}
+ } else {}
 }
 
 $(".replay").click(function() {

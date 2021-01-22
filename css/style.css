@@ -16,3 +16,13 @@
 .bottom {
     border-bottom: 1px solid black;
 }
+
+button {
+  font-size: 16px;
+  font-family: "Times New Roman", Times, serif;
+  margin: 4px;
+}
+
+p {
+  margin: 7px;
+}
