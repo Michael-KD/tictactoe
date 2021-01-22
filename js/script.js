@@ -19,8 +19,7 @@ let tile8 = "";
 let tile9 = "";
 
 function declareWinner() {
-  if (winner === "X") {$(".result").html("<h2>X wins!</h2>"); gameEnded = true; $(".replay").show()}
-  else if (winner === "O") {$(".result").html("<h2>O wins!</h2>"); gameEnded = true; $(".replay").show()}
+  if (winner === "X" || winner === "O") {$(".result").html(`<h2>${winner} wins!</h2>`); gameEnded = true; $(".replay").show()}
   else if (turnNumber === 9) {$(".result").html("<h2>It's a tie!</h2>"); $(".replay").show()}
   else {winner = "";}
 }
@@ -46,9 +45,11 @@ function checkDiagonal() {
 }
 
 function checkWinner() {
+  turnNumber += 1;
   checkVertical();
   checkHorizontal();
   checkDiagonal();
+  declareWinner();
 }
 
 function moveGrid(tileId) {
@@ -69,17 +70,13 @@ function performLogic(button, tile) {
     if (playerTurn === "X") {
       $(tile).html("<p>X</p>");
       moveGrid(tile);
-      turnNumber += 1;
       checkWinner();
-      declareWinner();
       playerTurn = "O";
    
     } else if (playerTurn === "O") {
       $(tile).html("<p>O</p>");
       moveGrid(tile);
-      turnNumber += 1;
       checkWinner();
-      declareWinner();
       playerTurn = "X";
     }
  } else {}
@@ -125,4 +122,3 @@ $("#button8").click(function() {
 $("#button9").click(function() {
     performLogic("#button9","#tile9");
 });
-
