@@ -1,12 +1,11 @@
 // 1. 
 // 2. 
-
-
-
+// 3.
+$(".replay").hide();
 
 let tileSlice = "";
 let playerTurn = "X";
-let numberTurn = 0;
+let turnNumber = 0;
 let gameEnded = false;
 let winner = "";
 let tile1 = "";
@@ -20,9 +19,9 @@ let tile8 = "";
 let tile9 = "";
 
 function declareWinner() {
-  if (winner === "X") {$(".result").html("<h2>X wins!</h2>"); gameEnded = true;}
-  else if (winner === "O") {$(".result").html("<h2>O wins!</h2>"); gameEnded = true;}
-  else if (numberTurn === 9) {$(".result").html("<h2>It's a tie!</h2>");}
+  if (winner === "X") {$(".result").html("<h2>X wins!</h2>"); gameEnded = true; $(".replay").show()}
+  else if (winner === "O") {$(".result").html("<h2>O wins!</h2>"); gameEnded = true; $(".replay").show()}
+  else if (turnNumber === 9) {$(".result").html("<h2>It's a tie!</h2>"); $(".replay").show()}
   else {winner = "";}
 }
 
@@ -52,10 +51,8 @@ function checkWinner() {
   checkDiagonal();
 }
 
-function choiceGrid(tileId) {
-  //console.log(tileId);
+function moveGrid(tileId) {
   tileSlice = tileId.slice(-1)
-  //console.log(tileSlice);
   if (tileSlice == 1) {tile1 = playerTurn;}
   else if (tileSlice == 2) {tile2 = playerTurn;}
   else if (tileSlice == 3) {tile3 = playerTurn;}
@@ -65,38 +62,32 @@ function choiceGrid(tileId) {
   else if (tileSlice == 7) {tile7 = playerTurn;}
   else if (tileSlice == 8) {tile8 = playerTurn;}
   else if (tileSlice == 9) {tile9 = playerTurn;}
-  
-  
-  //console.log(tile1);
 } 
 
 function performLogic(button, tile) {
   if (gameEnded === false) {
     if (playerTurn === "X") {
       $(tile).html("<p>X</p>");
-      choiceGrid(tile);
-      numberTurn += 1;
+      moveGrid(tile);
+      turnNumber += 1;
       checkWinner();
       declareWinner();
       playerTurn = "O";
-      //console.log("Winner: " + winner);
    
     } else if (playerTurn === "O") {
       $(tile).html("<p>O</p>");
-      choiceGrid(tile);
-      numberTurn += 1;
+      moveGrid(tile);
+      turnNumber += 1;
       checkWinner();
       declareWinner();
       playerTurn = "X";
-      //console.log("Winner: " + winner);
     }
-  }
-  else {}
+  } else {}
 }
 
-
-
-
+$(".replay").click(function() {
+    location.reload();
+});
 
 
 $("#button1").click(function() {
