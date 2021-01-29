@@ -28,24 +28,26 @@ function declareWinner() {
   else {winner = "";}
 }
 
-function checkVertical() {
-  if (tile1 === tile4 && tile1 === tile7 && tile1 !== "") {winner = tile1;} 
-  else if (tile2 === tile5 && tile2 === tile8 && tile2 !== "") {winner = tile2;} 
-  else if (tile3 === tile6 && tile3 === tile9 && tile3 !== "") {winner = tile3;}
+function checkThreeTiles(one, two, three) {
+  if (one === two && one === three && one !== "") {winner = one;}
   else {}
+}
+
+function checkVertical() {
+  checkThreeTiles(tile1, tile4, tile7);
+  checkThreeTiles(tile2, tile5, tile8);
+  checkThreeTiles(tile3, tile6, tile9);
 }
 
 function checkHorizontal() {
-  if (tile1 === tile2 && tile1 === tile3 && tile1 !== "") {winner = tile1;} 
-  else if (tile4 === tile5 && tile4 === tile6 && tile4 !== "") {winner = tile4;} 
-  else if (tile7 === tile8 && tile7 === tile9 && tile7 !== "") {winner = tile7;}
-  else {}
+  checkThreeTiles(tile1, tile2, tile3);
+  checkThreeTiles(tile4, tile5, tile6);
+  checkThreeTiles(tile7, tile8, tile9);
 }
 
 function checkDiagonal() {
-  if (tile1 === tile5 && tile1 === tile9 && tile1 !== "") {winner = tile1;} 
-  else if (tile3 === tile5 && tile3 === tile7 && tile3 !== "") {winner = tile3;}
-  else {}
+  checkThreeTiles(tile1, tile5, tile9);
+  checkThreeTiles(tile3, tile5, tile7);
 }
 
 function checkWinner() {
@@ -55,6 +57,7 @@ function checkWinner() {
   checkDiagonal();
   declareWinner();
 }
+
 
 function moveGrid(tileId) {
   tileSlice = tileId.slice(-1)
