@@ -26,3 +26,16 @@ button {
 p {
   margin: 7px;
 }
+
+
+.buttontiles {
+  transition-duration: 0.4s;
+  background-color: white; 
+  color: black; 
+  border: 2px solid #008CBA;
+}
+
+.buttontiles:hover {
+  background-color: #008CBA;
+  color: white;
+}

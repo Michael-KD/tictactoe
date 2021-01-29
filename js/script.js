@@ -18,6 +18,10 @@ let tile7 = "";
 let tile8 = "";
 let tile9 = "";
 
+function tileColor(color, tile) {
+  $(tile).css("background-color", color);
+}
+
 function declareWinner() {
   if (winner === "X" || winner === "O") {$(".result").html(`<h2>${winner} wins!</h2>`); gameEnded = true; $(".replay").show()}
   else if (turnNumber === 9) {$(".result").html("<h2>It's a tie!</h2>"); $(".replay").show()}
@@ -69,12 +73,14 @@ function performLogic(button, tile) {
   if (gameEnded === false) {
     if (playerTurn === "X") {
       $(tile).html("<p>X</p>");
+      tileColor("lightgreen", tile);
       moveGrid(tile);
       checkWinner();
       playerTurn = "O";
    
     } else if (playerTurn === "O") {
       $(tile).html("<p>O</p>");
+      tileColor("pink", tile);
       moveGrid(tile);
       checkWinner();
       playerTurn = "X";
